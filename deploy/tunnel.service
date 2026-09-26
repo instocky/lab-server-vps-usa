@@ -4,7 +4,8 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-# развернуть репо в ~/lab-server-vps-usa; %h = домашний каталог пользователя
+User=adlab
+# развернуть репо в ~/lab-server-vps-usa; %h = домашний каталог пользователя User=
 WorkingDirectory=%h/lab-server-vps-usa
 # one line per service: VPS 127.0.0.1:18081 -> lab-server 127.0.0.1:8081
 ExecStart=/usr/bin/ssh -N \

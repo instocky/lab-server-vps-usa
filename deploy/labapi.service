@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-# развернуть репо в ~/lab-server-vps-usa; %h = домашний каталог пользователя
+User=adlab
+# %h = домашний каталог пользователя User= (без этой строки %h станет /root)
 WorkingDirectory=%h/lab-server-vps-usa
 Environment=PATH=%h/lab-server-vps-usa/.venv/bin
 ExecStart=%h/lab-server-vps-usa/.venv/bin/uvicorn labapi.main:app --host 127.0.0.1 --port 8081
