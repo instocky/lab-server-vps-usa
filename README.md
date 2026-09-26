@@ -26,11 +26,12 @@ git push -u origin main
 На lab-server:
 
 ```bash
-git clone git@github.com:<user>/<repo>.git /opt/labapi
-cd /opt/labapi && uv sync --frozen
-sudo cp deploy/labapi.service /etc/systemd/system/
-sudo cp deploy/tunnel.service  /etc/systemd/system/
-sudo systemctl enable --now labapi tunnel
+cd ~ && git clone git@github.com:<user>/<repo>.git labapi
+cd ~/labapi && uv sync --frozen
+# подставить свой домен/VPS в deploy/tunnel.service, затем:
+sudo cp deploy/labapi.service deploy/tunnel.service /etc/systemd/system/
+sudo systemctl daemon-reload && sudo systemctl enable --now labapi tunnel
+curl -s http://127.0.0.1:8081/healthz
 ```
 
 Проверка: `curl -H 'X-Real-IP: 1.2.3.4' http://127.0.0.1:18081/v1/echo` на VPS,

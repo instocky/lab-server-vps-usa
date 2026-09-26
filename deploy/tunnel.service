@@ -4,13 +4,14 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-User=labapi
+# заменить %h/labapi на абсолютный путь, если сервис запускает не ваш пользователь
+WorkingDirectory=%h/labapi
 # one line per service: VPS 127.0.0.1:18081 -> lab-server 127.0.0.1:8081
 ExecStart=/usr/bin/ssh -N \
   -o ServerAliveInterval=30 -o ServerAliveCountMax=3 \
   -o ExitOnForwardFailure=yes \
   -o StrictHostKeyChecking=accept-new \
-  -i /home/labapi/.ssh/tunnel_ed25519 \
+  -i %h/.ssh/tunnel_ed25519 \
   -R 127.0.0.1:18081:127.0.0.1:8081 \
   tunnel@VPS
 Restart=always
