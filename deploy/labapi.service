@@ -4,10 +4,10 @@ After=network.target
 
 [Service]
 Type=simple
-# заменить %h/labapi на абсолютный путь, если сервис запускает не ваш пользователь
-WorkingDirectory=%h/labapi
-Environment=PATH=%h/labapi/.venv/bin
-ExecStart=%h/labapi/.venv/bin/uvicorn labapi.main:app --host 127.0.0.1 --port 8081
+# развернуть репо в ~/lab-server-vps-usa; %h = домашний каталог пользователя
+WorkingDirectory=%h/lab-server-vps-usa
+Environment=PATH=%h/lab-server-vps-usa/.venv/bin
+ExecStart=%h/lab-server-vps-usa/.venv/bin/uvicorn labapi.main:app --host 127.0.0.1 --port 8081
 Restart=always
 RestartSec=3
 

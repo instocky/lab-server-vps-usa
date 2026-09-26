@@ -4,8 +4,8 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-# заменить %h/labapi на абсолютный путь, если сервис запускает не ваш пользователь
-WorkingDirectory=%h/labapi
+# развернуть репо в ~/lab-server-vps-usa; %h = домашний каталог пользователя
+WorkingDirectory=%h/lab-server-vps-usa
 # one line per service: VPS 127.0.0.1:18081 -> lab-server 127.0.0.1:8081
 ExecStart=/usr/bin/ssh -N \
   -o ServerAliveInterval=30 -o ServerAliveCountMax=3 \
