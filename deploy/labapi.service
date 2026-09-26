@@ -1,0 +1,15 @@
+[Unit]
+Description=labapi (test API for ssh -R tunnel)
+After=network.target
+
+[Service]
+Type=simple
+User=labapi
+WorkingDirectory=/opt/labapi
+Environment=PATH=/opt/labapi/.venv/bin
+ExecStart=/opt/labapi/.venv/bin/uvicorn labapi.main:app --host 127.0.0.1 --port 8081
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
