@@ -14,7 +14,7 @@ ExecStart=/usr/bin/ssh -N \
   -o StrictHostKeyChecking=accept-new \
   -i /home/adlab/.ssh/proxyuser_ed25519 \
   -R 127.0.0.1:18081:127.0.0.1:8081 \
-  tunnel@VPS
+  tunnel@31.57.108.188
 Restart=always
 RestartSec=5
 
